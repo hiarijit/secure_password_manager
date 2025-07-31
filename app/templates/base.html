@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+<head>
+    <title>Password Manager</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}
+        <p style="color:{{ 'green' if category == 'success' else 'red' }}">{{ message }}</p>
+      {% endfor %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+</body>
+</html>

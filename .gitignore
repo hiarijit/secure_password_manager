@@ -1,0 +1,28 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Environment
+.env
+.env.*
+venv/
+env/
+ENV/
+*.env
+
+# Flask-related
+instance/
+*.db
+*.sqlite3
+
+# PyCharm/VSCode settings (optional)
+.idea/
+.vscode/
+
+# Mac/Linux
+.DS_Store
+
+# Log files
+*.log

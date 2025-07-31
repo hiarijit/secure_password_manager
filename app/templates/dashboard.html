@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Welcome, {{ current_user.email }}</h2>
+
+<h3>Add Credential</h3>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.site.label }} {{ form.site() }}<br>
+    {{ form.username.label }} {{ form.username() }}<br>
+    {{ form.password.label }} {{ form.password() }}<br>
+    {{ form.submit() }}
+</form>
+
+<h3>Your Saved Credentials:</h3>
+<ul>
+  {% for cred in credentials %}
+    <li>
+      <b>{{ cred.site }}</b>: {{ cred.username }} / {{ cred.password }}
+      [<a href="{{ url_for('main.edit_credential', id=cred.id) }}">Edit</a>] 
+      [<a href="{{ url_for('main.delete_credential', id=cred.id) }}">Delete</a>]
+    </li>
+  {% endfor %}
+</ul>
+
+<h3>Secure Options:</h3>
+
+<form method="GET" action="{{ url_for('main.export_credentials') }}">
+  <button type="submit">Export Credentials</button>
+</form>
+
+<p>
+  <a href="{{ url_for('main.export_key') }}">View Export Key</a>
+</p>
+
+
+<h3>Import Encrypted Credentials</h3>
+<form method="POST" action="{{ url_for('main.import_credentials') }}" enctype="multipart/form-data">
+  {{ import_form.hidden_tag() }}
+  {{ import_form.file.label }}<br>
+  {{ import_form.file() }}<br><br>
+  {{ import_form.submit() }}
+</form>
+
+
+{% endblock %}
