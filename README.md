@@ -42,4 +42,4 @@ CSRF is enabled by default; disable only when you trust all input sources.
 
 ## License
 
-MIT
+This project is licensed under the MIT License.
